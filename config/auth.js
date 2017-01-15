@@ -1,0 +1,3 @@
+bcrypt: {
+    rounds: 8
+}
