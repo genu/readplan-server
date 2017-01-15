@@ -1,3 +1,9 @@
-# readplan-server
+# Readplan Creater
+Creates a reading plan from books
 
-a [Sails](http://sailsjs.org) application
+## Dependencies
+- [Node/NPM](https://nodejs.org/en/)
+- [Yarn](yarnpkg.com)
+
+## Running lcally
+`yarn start`
