@@ -1,18 +1,18 @@
-var aws = require("aws-lib");
+var aws = require('aws-lib');
 var api = aws.createProdAdvClient(
-  sails.config.aws.accessKey,
-  sails.config.aws.secretAccessKey,
-  sails.config.aws.associateTag
+  sails.config.globals.aws.accessKey,
+  sails.config.globals.aws.secretAccessKey,
+  sails.config.globals.aws.associateTag
 );
 
 module.exports = {
   searchBooks: function(options, done) {
     api.call(
-      "ItemSearch",
+      'ItemSearch',
       {
-        SearchIndex: "Books",
-        Sort: "relevancerank",
-        ResponseGroup: "Images, ItemAttributes",
+        SearchIndex: 'Books',
+        Sort: 'relevancerank',
+        ResponseGroup: 'Images, ItemAttributes',
         Keywords: options.keywords,
         ItemPage: options.page
       },
@@ -26,8 +26,8 @@ module.exports = {
   },
   getBookDetails: function(ASIN, done) {
     api.call(
-      "ItemLookup",
-      {ItemId: ASIN, ResponseGroup: "Images, ItemAttributes"},
+      'ItemLookup',
+      { ItemId: ASIN, ResponseGroup: 'Images, ItemAttributes' },
       function(err, result) {
         if (err)
           return done(err);
