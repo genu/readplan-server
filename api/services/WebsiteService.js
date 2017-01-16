@@ -7,7 +7,7 @@ module.exports = {
       if (err)
         return done(err);
 
-      return done(undefined, { original: body, readable: unfluff(body) });
+      return done(undefined, unfluff(body));
     });
   }
 };

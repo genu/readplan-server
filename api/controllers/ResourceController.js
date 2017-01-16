@@ -36,14 +36,22 @@ module.exports = {
     });
   },
   createWebsiteResource: function(req, res) {
-    WebsiteService.getContent(req.param('target'), function(err, content) {
+    var target = req.param('target');
+
+    WebsiteService.getContent(target, function(err, content) {
       if (err)
-        return ok.serverError(err);
+        return res.serverError(err);
 
       Resource
-        .create({ type: 'website', data: content })
+        .create({
+          type: 'website',
+          data: {
+            link: target,
+            wordCount: HelperService.countWords(content.text)
+          }
+        })
         .then(function() {
-          return res.ok(content);
+          return res.ok(target);
         })
         .catch(function(err) {
           return res.serverError(err);

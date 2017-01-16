@@ -20,7 +20,7 @@ module.exports = {
           return this.data['ItemAttributes']['NumberOfPages'] * 350;
           break;
         case 'website':
-          return HelperService.countWords(this.data.text);
+          return this.data.wordCount;
           break;
         case 'pdf':
           break;

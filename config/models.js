@@ -10,7 +10,6 @@
  */
 
 module.exports.models = {
-
   /***************************************************************************
   *                                                                          *
   * Your app's default connection. i.e. the name of one of your app's        *
@@ -18,7 +17,6 @@ module.exports.models = {
   *                                                                          *
   ***************************************************************************/
   // connection: 'localDiskDb',
-
   /***************************************************************************
   *                                                                          *
   * How and whether Sails will attempt to automatically rebuild the          *
@@ -28,5 +26,4 @@ module.exports.models = {
   *                                                                          *
   ***************************************************************************/
   migrate: 'safe'
-
 };
