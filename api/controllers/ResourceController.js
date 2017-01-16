@@ -7,7 +7,7 @@
 
 module.exports = {
   search: function(req, res) {
-    var query = {keywords: req.param("keywords"), page: req.param("page", 1)};
+    var query = { keywords: req.param('keywords'), page: req.param('page', 1) };
     AWSService.searchBooks(query, function(err, results) {
       if (err)
         return res.serverError(err);
@@ -16,7 +16,7 @@ module.exports = {
     });
   },
   create: function(req, res) {
-    AWSService.getBookDetails(req.param("ASIN"), function(err, book) {
+    AWSService.getBookDetails(req.param('ASIN'), function(err, book) {
       Book.create(book).then(function() {
         if (err)
           return res.serverError(err);

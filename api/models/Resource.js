@@ -6,9 +6,12 @@
  */
 
 module.exports = {
-
   attributes: {
-
+    type: {
+      type: 'string',
+      enum: [ 'book', 'website', 'pdf', 'doc' ],
+      required: true
+    },
+    length: { type: 'integer', required: true }
   }
 };
-
