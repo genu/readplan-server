@@ -13,6 +13,10 @@ module.exports = {
       required: true
     },
     data: { type: 'json', required: true },
+    inStream: { type: 'boolean', defaultsTo: false },
+    schedule: { type: 'array' },
+    category: { type: 'string' },
+    owner: { model: 'profile' },
     getLength: function() {
       switch (this.type) {
         case 'book':
@@ -28,6 +32,7 @@ module.exports = {
           break;
       }
     },
+    shift: function() {},
     toJSON: function() {
       var obj = this.toObject();
 
