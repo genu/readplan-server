@@ -6,11 +6,23 @@
  */
 
 module.exports = {
-  create: function (req, res) {
-    var results = AWSService.findBook({name: "Hunger Games"}, function(err, results){
-      if(err) return res.serverError(err);
+  search: function(req, res) {
+    var query = {keywords: req.param("keywords"), page: req.param("page", 1)};
+    AWSService.searchBooks(query, function(err, results) {
+      if (err)
+        return res.serverError(err);
 
       return res.ok(results);
+    });
+  },
+  create: function(req, res) {
+    AWSService.getBookDetails(req.param("ASIN"), function(err, book) {
+      Book.create(book).then(function() {
+        if (err)
+          return res.serverError(err);
+
+        return res.ok(book);
+      });
     });
   }
 };
