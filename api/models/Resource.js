@@ -12,6 +12,28 @@ module.exports = {
       enum: [ 'book', 'website', 'pdf', 'doc' ],
       required: true
     },
-    length: { type: 'integer', required: true }
+    data: { type: 'json', required: true },
+    getLength: function() {
+      switch (this.type) {
+        case 'book':
+          // Assume ~350 words is on 1 page
+          return this.data['ItemAttributes']['NumberOfPages'] * 350;
+          break;
+        case 'website':
+          return HelperService.countWords(this.data.text);
+          break;
+        case 'pdf':
+          break;
+        case 'doc':
+          break;
+      }
+    },
+    toJSON: function() {
+      var obj = this.toObject();
+
+      obj.length = this.getLength();
+
+      return obj;
+    }
   }
 };
